@@ -1,0 +1,99 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="keybon.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="portName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout1" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout2" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout3" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout4" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout5" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout6" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout7" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout8" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout9" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout10" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout11" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout12" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout13" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout14" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Layout15" Type="keybon.ScreenLayout" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="checkedBox1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox4" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox5" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox6" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox7" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox8" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox9" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox10" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox11" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox12" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox13" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox14" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="checkedBox15" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
