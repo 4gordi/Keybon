@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs/Keybon_Custom/v17
+/keybon companion/obj/Debug
+/keybon companion/.vs/Keybon Companion
+/keybon companion/bin/Debug
+/keybon companion/obj/Release
+/keybon companion/bin/Release

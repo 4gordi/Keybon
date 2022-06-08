@@ -54,7 +54,6 @@ namespace keybon
                         hotkeyBox.Enabled = false;
                         listBox1.Enabled = false;
                         checkBox2.Enabled = false;
-                        //checkBox2.Visible = false;
                     }
                     else
                     {
