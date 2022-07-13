@@ -53,7 +53,6 @@ namespace keybon
                         RemoveBox.Enabled = false;
                         hotkeyBox.Enabled = false;
                         listBox1.Enabled = false;
-                        checkBox2.Enabled = false;
                     }
                     else
                     {
@@ -70,12 +69,7 @@ namespace keybon
                         RemoveBox.Enabled = true;
                         hotkeyBox.Enabled = true;
                         listBox1.Enabled = true;
-                        checkBox2.Enabled = true;
                     }
-                }
-                else
-                {
-                    currentLayout = value;
                 }
             }
         }
@@ -125,17 +119,8 @@ namespace keybon
 
             for (int i = 0; i < Layouts.Length; i++)
             {
-                if (i <= numLayout/2)
-                {
-                    Layouts[i] = new ScreenLayout();
-                    Layouts[i].name = $"Layout {i}";
-                }
-                else 
-                {
-                    Layouts[i] = new ScreenLayout();
-                    Layouts[i].name = $"Extension Layout {i}";
-                }
-                
+                Layouts[i] = new ScreenLayout();
+                Layouts[i].name = $"Layout {i}";
             }
 
             Layouts[0].name = "Default";
@@ -182,24 +167,9 @@ namespace keybon
             Console.WriteLine(keyReceived);
             // https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys.send
 
-            bool btn_pressed = false;
             try
             {
-                if (keyReceived == '1' & btn_pressed == false & checkBox2.Checked == true)
-                {
-                    switchToLayout(11);
-                    btn_pressed = true;
-                }
-                else if (keyReceived == '1' & btn_pressed == true & checkBox2.Checked == true)
-                {
-                    switchToLayout(1);
-                    btn_pressed = false;
-                }
-                else
-                {
-                    SendKeys.SendWait(Layouts[currentLayout].keyCommand[keyReceived - 49]);
-                }
-
+                SendKeys.SendWait(Layouts[currentLayout].keyCommand[keyReceived - 49]);
             }
             catch { }
 
@@ -256,7 +226,7 @@ namespace keybon
             if (layoutNum == 0)
             {
                 byte[] command = { (Byte)'D' };
-                checkBox2.Checked = false;
+
                 try
                 {
                     if (_serialPort != null)
@@ -266,12 +236,7 @@ namespace keybon
             }
             else
             {
-                for (int i = 0; i <= checkedBox2.Length; i++)
-                {
-                    checkBox2.Checked = checkedBox2[CurrentLayout];
-                }
-
-                Layouts[currentLayout].drawAll(_serialPort);
+				Layouts[currentLayout].drawAll(_serialPort);
             }
 
             listBox1.DataSource = Layouts[currentLayout].Apps;
@@ -424,23 +389,6 @@ namespace keybon
             Properties.Settings.Default.Layout13 = Layouts[13];
             Properties.Settings.Default.Layout14 = Layouts[14];
             Properties.Settings.Default.Layout15 = Layouts[15];
-
-            Properties.Settings.Default.checkedBox1 = checkedBox2[1];
-            Properties.Settings.Default.checkedBox2 = checkedBox2[2];
-            Properties.Settings.Default.checkedBox3 = checkedBox2[3];
-            Properties.Settings.Default.checkedBox4 = checkedBox2[4];
-            Properties.Settings.Default.checkedBox5 = checkedBox2[5];
-            Properties.Settings.Default.checkedBox6 = checkedBox2[6];
-            Properties.Settings.Default.checkedBox7 = checkedBox2[7];
-            Properties.Settings.Default.checkedBox8 = checkedBox2[8];
-            Properties.Settings.Default.checkedBox9 = checkedBox2[9];
-            Properties.Settings.Default.checkedBox10 = checkedBox2[10];
-            Properties.Settings.Default.checkedBox11 = checkedBox2[11];
-            Properties.Settings.Default.checkedBox12 = checkedBox2[12];
-            Properties.Settings.Default.checkedBox13 = checkedBox2[13];
-            Properties.Settings.Default.checkedBox14 = checkedBox2[14];
-            Properties.Settings.Default.checkedBox15 = checkedBox2[15];
-
             Properties.Settings.Default.Save();
         }
 
@@ -463,22 +411,6 @@ namespace keybon
             if (Properties.Settings.Default.Layout13 != null) Layouts[13] = Properties.Settings.Default.Layout13;
             if (Properties.Settings.Default.Layout14 != null) Layouts[14] = Properties.Settings.Default.Layout14;
             if (Properties.Settings.Default.Layout15 != null) Layouts[15] = Properties.Settings.Default.Layout15;
-
-            if (Properties.Settings.Default.checkedBox1 != false) checkedBox2[1] = Properties.Settings.Default.checkedBox1;
-            if (Properties.Settings.Default.checkedBox2 != false) checkedBox2[2] = Properties.Settings.Default.checkedBox2;
-            if (Properties.Settings.Default.checkedBox3 != false) checkedBox2[3] = Properties.Settings.Default.checkedBox3;
-            if (Properties.Settings.Default.checkedBox4 != false) checkedBox2[4] = Properties.Settings.Default.checkedBox4;
-            if (Properties.Settings.Default.checkedBox5 != false) checkedBox2[5] = Properties.Settings.Default.checkedBox5;
-            if (Properties.Settings.Default.checkedBox6 != false) checkedBox2[6] = Properties.Settings.Default.checkedBox6;
-            if (Properties.Settings.Default.checkedBox7 != false) checkedBox2[7] = Properties.Settings.Default.checkedBox7;
-            if (Properties.Settings.Default.checkedBox8 != false) checkedBox2[8] = Properties.Settings.Default.checkedBox8;
-            if (Properties.Settings.Default.checkedBox9 != false) checkedBox2[9] = Properties.Settings.Default.checkedBox9;
-            if (Properties.Settings.Default.checkedBox10 != false) checkedBox2[10] = Properties.Settings.Default.checkedBox10;
-            if (Properties.Settings.Default.checkedBox11 != false) checkedBox2[11] = Properties.Settings.Default.checkedBox11;
-            if (Properties.Settings.Default.checkedBox12 != false) checkedBox2[12] = Properties.Settings.Default.checkedBox12;
-            if (Properties.Settings.Default.checkedBox13 != false) checkedBox2[13] = Properties.Settings.Default.checkedBox13;
-            if (Properties.Settings.Default.checkedBox14 != false) checkedBox2[14] = Properties.Settings.Default.checkedBox14;
-            if (Properties.Settings.Default.checkedBox15 != false) checkedBox2[15] = Properties.Settings.Default.checkedBox15;
         }
 
         public Bitmap ResizeBitmap(Bitmap bmp, int width, int height)
@@ -539,10 +471,6 @@ namespace keybon
             switchToLayout(0);
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            checkedBox2[currentLayout] = checkBox2.Checked;
-        }
     }
 
     //---------------------------------------------------------------------------------------------------------------

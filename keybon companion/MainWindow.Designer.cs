@@ -54,7 +54,6 @@
             this.pictureBox07 = new System.Windows.Forms.PictureBox();
             this.pictureBox08 = new System.Windows.Forms.PictureBox();
             this.pictureBox09 = new System.Windows.Forms.PictureBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -372,20 +371,6 @@
             this.pictureBox09.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox_DragDrop);
             this.pictureBox09.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox_DragEnter);
             // 
-            // checkBox2
-            // 
-            this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox2.Enabled = false;
-            this.checkBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.checkBox2.Location = new System.Drawing.Point(452, 175);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(1);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(108, 21);
-            this.checkBox2.TabIndex = 35;
-            this.checkBox2.Text = "Extension Layout";
-            this.toolTip1.SetToolTip(this.checkBox2, "If enabled, this layout work, like panel tool from soft");
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
             // notifyIcon1
             // 
             this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
@@ -507,7 +492,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(620, 556);
-            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label2);
@@ -598,7 +582,6 @@
         public System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripComboBox TSComboBox1;
         private System.Windows.Forms.ToolStripMenuItem activateToolStripMenuItem;
-        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 
