@@ -1,9 +1,9 @@
 #include <USBComposite.h>
 #include <SPI.h>
 #include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
-#include <Button.h> // https://github.com/JChristensen/Button
+#include <Adafruit_GFX.h> // 1.7.5!!!
+#include <Adafruit_SSD1306.h> //see README.md
+#include <JC_Button.h> // https://github.com/JChristensen/JC_Button
 #include "bmp.h"
 
 USBHID HID;
