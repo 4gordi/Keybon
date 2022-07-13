@@ -8,7 +8,7 @@ Keybon is a macro keyboard with configurable layouts and functions. Integrated i
 
 # Instructions
 
-1.  Download the USB bootloader: https://github.com/rogerclarkmelbourne/STM32duino-bootloader
+1.  Download the USB bootloader: https://github.com/rogerclarkmelbourne/STM32duino-bootloader/blob/master/binaries/generic_boot20_pc13.bin
 
     Connect a USB-to-Serial adapter to the TX/RX pins of your board. Close the BOOT0 jumper before applying power.
     
