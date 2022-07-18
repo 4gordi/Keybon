@@ -16,10 +16,9 @@ using System.Xml.Serialization;
 
 namespace keybon
 {
-
     public partial class MainWindow : Form
     {
-        String portName = "COM14";
+        String portName = "";
         public SerialPort _serialPort;
         static int numLayout = 16;
         public ScreenLayout[] Layouts = new ScreenLayout[numLayout];
@@ -133,20 +132,28 @@ namespace keybon
 
             loadSettings();
 
-            // Serial init
+            //// Serial init
             _serialPort = new SerialPort(portName, 115200, Parity.None, 8, StopBits.One);
             _serialPort.DtrEnable = true;
             ports = SerialPort.GetPortNames();
             comboBox2.DataSource = ports;
+
             if (ports.Contains(portName))
             {
                 comboBox2.SelectedItem = portName;
+
                 try
                 {
+                    comboBox2.Items.Clear();
                     _serialPort.Open();
+                    //comboBox2.Enabled = false;
+                    //Console.WriteLine("No problems");
                 }
                 catch { }
             }
+
+            comboBox2.SelectedItem = portName;
+
             _serialPort.DataReceived += portDataReceived;
 
             Timer timer1 = new Timer { Interval = 250 };
@@ -154,19 +161,19 @@ namespace keybon
             timer1.Tick += new System.EventHandler(OnTimerEvent);
         }
 
+
         private void portDataReceived(object sender, EventArgs args)
         {
-
             SerialPort port = sender as SerialPort;
 
             if (port == null)
             {
                 return;
             }
+
             int keyReceived = _serialPort.ReadChar();
             Console.WriteLine(keyReceived);
             // https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys.send
-
             try
             {
                 SendKeys.SendWait(Layouts[currentLayout].keyCommand[keyReceived - 49]);
@@ -180,7 +187,7 @@ namespace keybon
             notifyIcon1.BalloonTipTitle = "Keybon";
             notifyIcon1.BalloonTipText = "App has been minimized to tray and will be run in background mode";
             notifyIcon1.Text = "Keybon Companion";
-            notifyIcon1.ShowBalloonTip(1000);
+            notifyIcon1.ShowBalloonTip(500);
         }
 
         [DllImport("user32.dll")]
@@ -236,7 +243,7 @@ namespace keybon
             }
             else
             {
-				Layouts[currentLayout].drawAll(_serialPort);
+                Layouts[currentLayout].drawAll(_serialPort);
             }
 
             listBox1.DataSource = Layouts[currentLayout].Apps;
@@ -322,16 +329,20 @@ namespace keybon
         private void checkBox1_CheckedChanged(object sender, EventArgs e) // Change Brightness
         {
             var eventSource = (sender as CheckBox);
-            if (eventSource.Checked)
+            try
             {
-                byte[] command = { (Byte)'b' };
-                _serialPort.Write(command, 0, command.Length);
+                if (eventSource.Checked)
+                {
+                    byte[] command = { (Byte)'b' };
+                    _serialPort.Write(command, 0, command.Length);
+                }
+                else
+                {
+                    byte[] command = { (Byte)'B' };
+                    _serialPort.Write(command, 0, command.Length);
+                }
             }
-            else
-            {
-                byte[] command = { (Byte)'B' };
-                _serialPort.Write(command, 0, command.Length);
-            }
+            catch { }
 
         }
 
@@ -362,11 +373,13 @@ namespace keybon
 
         private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            _serialPort.Close();
+            //_serialPort.Close();
             _serialPort.PortName = comboBox2.SelectedItem.ToString();
+
             try
             {
                 _serialPort.Open();
+                //comboBox2.Enabled = false;
             }
             catch { }
         }
@@ -463,7 +476,7 @@ namespace keybon
         {
             About f3 = new About(this);
             if (Application.OpenForms["About"] == null)
-            f3.ShowDialog();
+                f3.ShowDialog();
         }
 
         private void switchToDefaultToolStripMenuItem_Click(object sender, EventArgs e)
