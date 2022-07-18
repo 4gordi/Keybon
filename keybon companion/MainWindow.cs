@@ -18,7 +18,7 @@ namespace keybon
 {
     public partial class MainWindow : Form
     {
-        String portName = "";
+        String portName = "COM1";
         public SerialPort _serialPort;
         static int numLayout = 16;
         public ScreenLayout[] Layouts = new ScreenLayout[numLayout];
@@ -135,25 +135,23 @@ namespace keybon
             //// Serial init
             _serialPort = new SerialPort(portName, 115200, Parity.None, 8, StopBits.One);
             _serialPort.DtrEnable = true;
-            ports = SerialPort.GetPortNames();
+            
+
+            string[] ports = SerialPort.GetPortNames();
             comboBox2.DataSource = ports;
+            Console.WriteLine(portName);
 
             if (ports.Contains(portName))
             {
                 comboBox2.SelectedItem = portName;
-
                 try
                 {
-                    comboBox2.Items.Clear();
                     _serialPort.Open();
-                    //comboBox2.Enabled = false;
-                    //Console.WriteLine("No problems");
+                    Console.WriteLine("No problems");
                 }
                 catch { }
             }
-
             comboBox2.SelectedItem = portName;
-
             _serialPort.DataReceived += portDataReceived;
 
             Timer timer1 = new Timer { Interval = 250 };
@@ -193,8 +191,8 @@ namespace keybon
         [DllImport("user32.dll")]
         static extern IntPtr GetForegroundWindow();
         [DllImport("user32.dll")]
-        static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
 
+        static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
 
         private void OnTimerEvent(object sender, EventArgs e)
         {
@@ -249,7 +247,6 @@ namespace keybon
             listBox1.DataSource = Layouts[currentLayout].Apps;
             comboBox1.SelectedIndex = layoutNum;
             hotkeyBox.Text = Layouts[currentLayout].keyCommand[selectedButton];
-            //TSComboBox1.ComboBox.SelectedIndex = comboBox1.SelectedIndex;
         }
 
         private void pictureBox_DragEnter(object sender, DragEventArgs e)
@@ -373,13 +370,11 @@ namespace keybon
 
         private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            //_serialPort.Close();
-            _serialPort.PortName = comboBox2.SelectedItem.ToString();
-
+            //_serialPort.PortName = comboBox2.SelectedItem.ToString();
+            portName = comboBox2.SelectedItem.ToString();
             try
             {
                 _serialPort.Open();
-                //comboBox2.Enabled = false;
             }
             catch { }
         }

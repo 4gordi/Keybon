@@ -1,4 +1,6 @@
-﻿namespace keybon
+﻿using System.IO.Ports;
+
+namespace keybon
 {
     partial class MainWindow
     {
@@ -151,6 +153,8 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            //_serialPort = new SerialPort(portName, 115200, Parity.None, 8, StopBits.One);
+            
             this.comboBox2.Items.AddRange(new object[] {
             "COM6",
             "COM7"});
