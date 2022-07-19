@@ -135,25 +135,22 @@ namespace keybon
             //// Serial init
             _serialPort = new SerialPort(portName, 115200, Parity.None, 8, StopBits.One);
             _serialPort.DtrEnable = true;
-            
-
             string[] ports = SerialPort.GetPortNames();
-            comboBox2.DataSource = ports;
-            Console.WriteLine(portName);
+            //comboBox2.DataSource = ports;
+            comboBox2.Items.Add(ports);
 
             if (ports.Contains(portName))
             {
                 comboBox2.SelectedItem = portName;
+                Console.WriteLine("Clear COM-Port");
                 try
                 {
                     _serialPort.Open();
-                    Console.WriteLine("No problems");
                 }
                 catch { }
             }
             comboBox2.SelectedItem = portName;
             _serialPort.DataReceived += portDataReceived;
-
             Timer timer1 = new Timer { Interval = 250 };
             timer1.Enabled = true;
             timer1.Tick += new System.EventHandler(OnTimerEvent);
@@ -212,7 +209,6 @@ namespace keybon
                     break;
                 }
             }
-
         }
 
         private void switchToLayout(int layoutNum)
@@ -370,7 +366,9 @@ namespace keybon
 
         private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            //_serialPort.PortName = comboBox2.SelectedItem.ToString();
+            _serialPort.Close();
+            portName = _serialPort.PortName;
+            _serialPort.PortName = comboBox2.SelectedItem.ToString();
             portName = comboBox2.SelectedItem.ToString();
             try
             {
