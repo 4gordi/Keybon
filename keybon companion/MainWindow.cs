@@ -141,15 +141,15 @@ namespace keybon
 
             if (ports.Contains(portName))
             {
-                comboBox2.SelectedItem = portName;
-                Console.WriteLine("Clear COM-Port");
+                //comboBox2.SelectedItem = portName;
+                //Console.WriteLine("Clear COM-Port");
                 try
                 {
                     _serialPort.Open();
                 }
                 catch { }
             }
-            comboBox2.SelectedItem = portName;
+            //comboBox2.SelectedItem = portName;
             _serialPort.DataReceived += portDataReceived;
             Timer timer1 = new Timer { Interval = 250 };
             timer1.Enabled = true;
