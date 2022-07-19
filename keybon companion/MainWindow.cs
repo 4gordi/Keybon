@@ -139,17 +139,21 @@ namespace keybon
             //comboBox2.DataSource = ports;
             comboBox2.Items.Add(ports);
 
+            foreach (string port in ports)
+            {
+                comboBox2.Items.Add(port);
+            }
+
             if (ports.Contains(portName))
             {
-                //comboBox2.SelectedItem = portName;
-                //Console.WriteLine("Clear COM-Port");
+                comboBox2.SelectedItem = portName;
                 try
                 {
                     _serialPort.Open();
                 }
                 catch { }
             }
-            //comboBox2.SelectedItem = portName;
+            comboBox2.SelectedItem = portName;
             _serialPort.DataReceived += portDataReceived;
             Timer timer1 = new Timer { Interval = 250 };
             timer1.Enabled = true;
@@ -361,7 +365,13 @@ namespace keybon
         private void comboBox2_DropDown(object sender, EventArgs e)
         {
             ports = SerialPort.GetPortNames();
-            comboBox2.DataSource = ports;
+
+            foreach (string port in ports)
+            {
+                comboBox2.Items.Clear();
+                comboBox2.Items.Add(port);
+            }
+            //comboBox2.DataSource = ports;
         }
 
         private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
