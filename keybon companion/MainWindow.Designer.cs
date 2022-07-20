@@ -152,10 +152,7 @@ namespace keybon
             // 
             // comboBox2
             // 
-            this.comboBox2.FormattingEnabled = true;         
-            //this.comboBox2.Items.AddRange(new object[] {
-            //"COM6",
-            //"COM7"});
+            this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(451, 500);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(85, 21);
@@ -391,7 +388,7 @@ namespace keybon
             this.toolStripSeparator1,
             this.closeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 131);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 153);
             // 
             // openToolStripMenuItem
             // 
@@ -413,6 +410,7 @@ namespace keybon
             // 
             this.switchToDefaultToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("switchToDefaultToolStripMenuItem.Image")));
             this.switchToDefaultToolStripMenuItem.Name = "switchToDefaultToolStripMenuItem";
+            this.switchToDefaultToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.switchToDefaultToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
             this.switchToDefaultToolStripMenuItem.Text = "Switch to Default";
             this.switchToDefaultToolStripMenuItem.Click += new System.EventHandler(this.switchToDefaultToolStripMenuItem_Click);
