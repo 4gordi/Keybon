@@ -388,7 +388,7 @@ namespace keybon
             this.toolStripSeparator1,
             this.closeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 153);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 131);
             // 
             // openToolStripMenuItem
             // 
@@ -522,8 +522,9 @@ namespace keybon
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Keybon Companion";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.TrayMinimizerForm);
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.RemoveBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddBox)).EndInit();

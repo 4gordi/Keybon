@@ -181,12 +181,23 @@ namespace keybon
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void TrayMinimizerForm(object sender, EventArgs e)
         {
             notifyIcon1.BalloonTipTitle = "Keybon";
             notifyIcon1.BalloonTipText = "App has been minimized to tray and will be run in background mode";
             notifyIcon1.Text = "Keybon Companion";
-            notifyIcon1.ShowBalloonTip(500);
+
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                this.Hide();
+                notifyIcon1.Visible = true;
+                notifyIcon1.ShowBalloonTip(1000);
+                
+            }
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                notifyIcon1.Visible = false;
+            }
         }
 
         [DllImport("user32.dll")]
@@ -197,22 +208,7 @@ namespace keybon
 
         private void OnTimerEvent(object sender, EventArgs e)
         {
-            const int nChars = 256;
-            StringBuilder Buff = new StringBuilder(nChars);
-            IntPtr handle = GetForegroundWindow();
-            GetWindowText(handle, Buff, nChars);
-            Process[] AllProcess = Process.GetProcesses();
 
-            foreach (Process pro in AllProcess)
-            {
-                String mainWindowTitle = pro.MainWindowTitle;
-                if (mainWindowTitle != "" && Buff.ToString().Equals(mainWindowTitle))
-                {
-                    // Console.WriteLine(pro.ProcessName.ToString());
-                    CurrentApp = pro.ProcessName.ToString();
-                    break;
-                }
-            }
         }
 
         private void switchToLayout(int layoutNum)
@@ -442,6 +438,10 @@ namespace keybon
 
         private void MainWindow_Resize(object sender, EventArgs e)
         {
+            notifyIcon1.BalloonTipTitle = "Keybon";
+            notifyIcon1.BalloonTipText = "App has been minimized to tray and will be run in background mode";
+            notifyIcon1.Text = "Keybon Companion";
+
             if (WindowState == FormWindowState.Minimized)
             {
                 this.Hide();
