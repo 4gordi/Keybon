@@ -208,7 +208,22 @@ namespace keybon
 
         private void OnTimerEvent(object sender, EventArgs e)
         {
+            const int nChars = 256;
+            StringBuilder Buff = new StringBuilder(nChars);
+            IntPtr handle = GetForegroundWindow();
+            GetWindowText(handle, Buff, nChars);
+            Process[] AllProcess = Process.GetProcesses();
 
+            foreach (Process pro in AllProcess)
+            {
+                String mainWindowTitle = pro.MainWindowTitle;
+                if (mainWindowTitle != "" && Buff.ToString().Equals(mainWindowTitle))
+                {
+                    // Console.WriteLine(pro.ProcessName.ToString());
+                    CurrentApp = pro.ProcessName.ToString();
+                    break;
+                }
+            }
         }
 
         private void switchToLayout(int layoutNum)
